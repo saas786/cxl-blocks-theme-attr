@@ -8,14 +8,14 @@
  */
 
 // Import block controls.
-import ControlBoxShadow from './control-box-shadow';
+import ControlVaadinTheme from './control-vaadin-theme';
 
 export default [
 	{
-		name:    'boxShadow',
+		name:    'vaadinTheme',
 		type:    'string',
 		default: '',
-		control: ControlBoxShadow,
+		control: ControlVaadinTheme,
 		blocks:  [
 			'core/image',
 			'core/gallery',

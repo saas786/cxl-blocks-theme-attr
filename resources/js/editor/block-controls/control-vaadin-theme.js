@@ -1,7 +1,7 @@
 /**
- * Box Shadow Control.
+ * Vaadin Theme Control.
  *
- * Outputs a select dropdown control for handling the box-shadow.
+ * Outputs a select dropdown control for handling the theme="sometheme othertheme".
  *
  * @package   CXL
  * @license   https://www.gnu.org/licenses/gpl-2.0.html GPL-2.0-or-later
@@ -27,22 +27,22 @@ export default ( props ) => {
 		{ label: labels.sizes.extraLarge, value: 'xl'   }
 	];
 
-	// Get the box-shadow attribute.
-	let { boxShadow } = props.attributes;
+	// Get the vaadin-theme attribute.
+	let { vaadinTheme } = props.attributes;
 
 	return (
 		<SelectControl
-			key="boxShadow"
+			key="vaadinTheme"
 			label={ labels.theme }
-			value={ boxShadow }
+			value={ vaadinTheme }
 			options={ options }
 			onChange={ ( selected ) => {
 				props.setAttributes( {
-					boxShadow: selected,
+                    vaadinTheme: selected,
 					className: updateClass(
 						props.attributes.className,
-						selected ? 'shadow-' + selected : '',
-						options.filter( opt => opt.value ).map( opt => 'shadow-' + opt.value )
+						selected ? 'theme-' + selected : '',
+						options.filter( opt => opt.value ).map( opt => 'theme-' + opt.value )
 					)
 				} );
 			} }
