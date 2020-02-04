@@ -1,0 +1,24 @@
+{
+    "name": "cxl/block-attrs",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Leho Kraav",
+            "email": "leho@conversionxl.com"
+        }
+    ],
+    "repositories": [
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "CXL\\Block\\Attrs\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "scripts": {
+    }
+}

@@ -1,0 +1,10 @@
+.DS_Store
+*.backup
+*.diff
+*.orig
+*.patch
+*.sw*
+*.idea
+dist/
+node_modules/
+vendor/
