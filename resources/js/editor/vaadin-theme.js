@@ -62,7 +62,7 @@ export function addAttribute( settings ) {
             vaadinTheme: {
                 type: 'string',
                 source: 'attribute',
-                attribute: 'vaadin-theme',
+                attribute: 'datavaadintheme',
                 selector: '*',
             },
         } );
@@ -82,6 +82,11 @@ export function addAttribute( settings ) {
 export const withInspectorControl = createHigherOrderComponent(
     ( BlockEdit ) => {
         return ( props ) => {
+
+            const { name, clientId, attributes, setAttributes, isSelected } = props;
+
+            const { vaadinTheme } = attributes;
+
             const hasAnchor = hasBlockSupport( props.name, 'vaadinTheme' );
 
             if ( hasAnchor && props.isSelected ) {
@@ -91,7 +96,7 @@ export const withInspectorControl = createHigherOrderComponent(
                         <InspectorAdvancedControls>
                             <TextControl
                                 className="html-vaadinTheme-control"
-                                label={ __( 'HTML Anchor' ) }
+                                label={ __( 'Vaadin Theme' ) }
                                 help={
                                     <>
                                         { __(
@@ -108,6 +113,7 @@ export const withInspectorControl = createHigherOrderComponent(
                                     </>
                                 }
                                 value={ props.attributes.vaadinTheme || '' }
+                                /*
                                 onChange={ ( nextValue ) => {
                                     nextValue = nextValue.replace(
                                         ANCHOR_REGEX,
@@ -117,6 +123,33 @@ export const withInspectorControl = createHigherOrderComponent(
                                         vaadinTheme: nextValue,
                                     } );
                                 } }
+                                */
+                                onChange={ ( nextValue ) => {
+
+                                    nextValue = nextValue.replace(
+                                        ANCHOR_REGEX,
+                                        '-'
+                                    );
+                                    //console.log(nextValue);
+                                    console.log(vaadinTheme);
+                                    console.log(nextBlockClientId);
+
+                                    setAttributes( {
+                                        vaadinTheme: nextValue,
+                                    } );
+
+                                    const nextBlockClientId = wp.data
+                                        .select( 'core/block-editor' )
+                                        .getNextBlockClientId( clientId );
+
+                                    if ( nextBlockClientId ) {
+                                        wp.data
+                                            .dispatch( 'core/block-editor' ).updateBlockAttributes( nextBlockClientId, {
+                                            vaadinTheme: nextValue
+                                        } );
+                                    }
+                                } }
+
                             />
                         </InspectorAdvancedControls>
                     </>
@@ -201,7 +234,7 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
             if ( typeof vaadinTheme !== 'undefined' && vaadinTheme ) {
                 customData = Object.assign( customData, {
-                    'data-vaadin-theme': vaadinTheme,
+                    'datavaadintheme': vaadinTheme,
                 } );
             }
 
@@ -213,6 +246,8 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
                 ...customData,
             };
         }
+
+        console.log(wrapperProps);
 
         return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
     } );
