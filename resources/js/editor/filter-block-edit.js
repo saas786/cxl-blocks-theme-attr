@@ -28,7 +28,7 @@ const { addFilter }                  = wp.hooks;
  * @param  object   BlockEdit
  * @return function
  */
-const ExhaleBlockEdit = createHigherOrderComponent( ( BlockEdit ) => {
+const CXLUIBlockEdit = createHigherOrderComponent( ( BlockEdit ) => {
 
 	return ( props ) => {
 
@@ -64,6 +64,6 @@ const ExhaleBlockEdit = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 	};
 
-}, 'ExhaleBlockEdit' );
+}, 'CXLUIBlockEdit' );
 
-addFilter( 'editor.BlockEdit', 'exhale/block/edit', ExhaleBlockEdit );
+addFilter( 'editor.BlockEdit', 'cxl/ui/block/edit', CXLUIBlockEdit );

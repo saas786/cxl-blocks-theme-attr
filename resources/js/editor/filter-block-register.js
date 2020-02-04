@@ -25,7 +25,7 @@ const { addFilter } = wp.hooks;
  * @param  string  Block name.
  * @return object
  */
-addFilter( 'blocks.registerBlockType', 'exhale/block/register', ( settings, name ) => {
+addFilter( 'blocks.registerBlockType', 'cxl/ui/block/register', ( settings, name ) => {
 
 	fields.forEach( field => {
 
