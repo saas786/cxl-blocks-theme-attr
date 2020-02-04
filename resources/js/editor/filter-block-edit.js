@@ -9,7 +9,6 @@
  */
 
 // Imports the design setting fields.
-import colorMap from './util/color-map';
 import fields   from './block-controls/fields';
 
 // Imports the design settings panel.
@@ -32,32 +31,6 @@ const { addFilter }                  = wp.hooks;
 const ExhaleBlockEdit = createHigherOrderComponent( ( BlockEdit ) => {
 
 	return ( props ) => {
-
-		// Back-compat layer. What we're doing here is updating block
-		// attributes to match up with new attribute values in newer
-		// versions of the theme.
-
-		if ( props.attributes.backgroundColor && props.attributes.backgroundColor in colorMap  ) {
-			props.attributes.backgroundColor = colorMap[ props.attributes.backgroundColor ];
-		}
-
-		if ( props.attributes.overlayColor && props.attributes.overlayColor in colorMap  ) {
-			props.attributes.overlayColor = colorMap[ props.attributes.overlayColor ];
-		}
-
-		if ( props.attributes.mainColor && props.attributes.mainColor in colorMap  ) {
-			props.attributes.mainColor = colorMap[ props.attributes.mainColor ];
-		}
-
-		if ( props.attributes.textColor && props.attributes.textColor in colorMap  ) {
-			props.attributes.textColor = colorMap[ props.attributes.textColor ];
-		}
-
-		if ( props.attributes.color && props.attributes.color in colorMap  ) {
-			props.attributes.color = colorMap[ props.attributes.color ];
-		}
-
-		// \*/ End back-compat.
 
 		// Create an array to hold the fields for the current block.
 		let blockFields = [];
