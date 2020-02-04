@@ -70,8 +70,8 @@ class CXLUi {
                 'default'        => __( 'Default',         'cxl-ui' ),
                 'designSettings' => __( 'Design Settings', 'cxl-ui' ),
                 'none'           => __( 'None',            'cxl-ui' ),
-                'shadow'         => __( 'Shadow',          'cxl-ui' ),
-                
+                'theme'         => __( 'Theme',          'cxl-ui' ),
+
                 // Sizes.
                 'sizes' => [
                     'fine'       => __( 'Fine',        'cxl-ui' ),
@@ -84,7 +84,16 @@ class CXLUi {
                     'huge'       => __( 'Huge',        'cxl-ui' ),
                     'gargantuan' => __( 'Gargantuan',  'cxl-ui' ),
                     'colossal'   => __( 'Colossal',    'cxl-ui' )
-                ]
+                ],
+
+                // Vaadin Themes
+                'themes' => [
+                    'cxl-minidegree-track'  => __( 'Minidegree Track',        'cxl-ui' ),
+                    'cxl-accordion-card'    => __( 'Accordian Card',  'cxl-ui' ),
+                    'cxl-marketing-nav'     => __( 'Marketing Nav',  'cxl-ui' ), //cxl-marketing-nav hide-scroll-buttons minimal
+                    'reverse'               => __( 'Reverse',  'cxl-ui' )
+                ],
+
             ]
         ] );
 

@@ -33,7 +33,7 @@ export default ( props ) => {
 	return (
 		<SelectControl
 			key="boxShadow"
-			label={ labels.shadow }
+			label={ labels.theme }
 			value={ boxShadow }
 			options={ options }
 			onChange={ ( selected ) => {
