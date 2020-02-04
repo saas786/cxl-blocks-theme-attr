@@ -68,24 +68,10 @@ class CXLUi {
         wp_localize_script( 'cxl-blocks-theme-attr', 'cxlUIEditor', [
             'labels' => [
                 'default'        => __( 'Default',         'cxl-ui' ),
-                'borderDouble'   => __( 'Double',          'cxl-ui' ),
-                'borderDashed'   => __( 'Dashed',          'cxl-ui' ),
-                'borderRadius'   => __( 'Border Radius',   'cxl-ui' ),
                 'designSettings' => __( 'Design Settings', 'cxl-ui' ),
-                'highlight'      => __( 'Highlight',       'cxl-ui' ),
-                'listType'       => __( 'Bullets',         'cxl-ui' ),
                 'none'           => __( 'None',            'cxl-ui' ),
-                'reverse'        => __( 'Reverse',         'cxl-ui' ),
-                'rounded'        => __( 'Rounded',         'cxl-ui' ),
                 'shadow'         => __( 'Shadow',          'cxl-ui' ),
-
-                // Lists.
-                'lists' => [
-                    'disc'   => __( 'Disc',   'cxl-ui' ),
-                    'circle' => __( 'Circle', 'cxl-ui' ),
-                    'square' => __( 'Square', 'cxl-ui' )
-                ],
-
+                
                 // Sizes.
                 'sizes' => [
                     'fine'       => __( 'Fine',        'cxl-ui' ),
