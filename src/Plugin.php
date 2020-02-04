@@ -7,12 +7,27 @@
 
 namespace CXL\Block\Attrs;
 
+use CXL\Block\Attrs\Plugin\Integrations;
+use ConversionXL\Theme\Lib;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
  * Main class
  */
 final class Plugin {
+
+    /**
+     * @since 2020.02.04
+     */
+    use Lib\Traits\GetIntegrationInstance;
+
+    /**
+     * Integration registry
+     *
+     * @var array
+     */
+    public $integrations;
 
     /**
      * Plugin dir path.
@@ -46,6 +61,12 @@ final class Plugin {
      */
     private function __construct() {
 
+        // @todo `class_exists()` everything?
+        $this->integrations = [
+            // Integrations.
+            Integrations\CXLUi::class => true,
+        ];
+
         /**
          * Provision plugin context info.
          *
@@ -53,7 +74,7 @@ final class Plugin {
          * @see https://stackoverflow.com/questions/11094776/php-how-to-go-one-level-up-on-dirname-file
          */
         $this->plugin_dir_path = trailingslashit( dirname( __DIR__, 1 ) );
-        $this->plugin_dir_url  = plugin_dir_url( __FILE__ );
+        $this->plugin_dir_url  = plugin_dir_url( CXL_UI_BLOCKS_PLUGIN_FILE );
         $this->slug            = basename( $this->plugin_dir_path );
 
         // Run.
@@ -69,6 +90,12 @@ final class Plugin {
      * Init
      */
     public function init(): void {
+
+        foreach ( $this->integrations as $class => $enabled ) {
+            if ( true === $enabled ) {
+                $this->get_integration_instance( $class );
+            }
+        }
 
     }
 

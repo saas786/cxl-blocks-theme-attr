@@ -5,6 +5,7 @@
 *.patch
 *.sw*
 *.idea
-dist/
+public/
 node_modules/
 vendor/
+resources/js/bk/
