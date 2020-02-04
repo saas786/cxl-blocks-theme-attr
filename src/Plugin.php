@@ -27,7 +27,7 @@ final class Plugin {
      * @var string
      */
     public $plugin_dir_url;
-    
+
     /**
      * Singleton pattern
      *

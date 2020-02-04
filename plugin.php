@@ -1,15 +1,15 @@
 <?php
 /**
- * CXL Institute functionality, integrations, features
+ * CXL Blocks functionality.
  *
- * @package ConversionXL
+ * @package CXL
  *
- * Plugin Name: CXL Institute
+ * Plugin Name: CXL Blocks Theme Attr
  * Plugin URI: https://conversionxl.com/institute/
- * Description: Functionality, integrations, features
+ * Description: Adds a "Theme attribute" field to all blocks, it's for allowing users to configure Vaadin theme attribute in block editor.
  * Author: Leho Kraav
  * Author URI: https://conversionxl.com
- * Version: 2020.01.02
+ * Version: 2020.04.02
  */
 
 use CXL\Block\Attrs\Plugin;
