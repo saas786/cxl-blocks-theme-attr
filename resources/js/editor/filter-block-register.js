@@ -33,18 +33,9 @@ addFilter( 'blocks.registerBlockType', 'cxl/ui/block/register', ( settings, name
 		// attributes for the field.
 		if ( field.blocks.includes( name ) ) {
 
-		    //console.log(field.name);
-            //console.log(field.attributes);
 			settings.attributes = assign( settings.attributes, {
 				[ field.name ] : field.attributes
-                /*{
-					type:    field.type,
-					default: field.default
-				}
-				*/
 			} );
-
-            //console.log(settings.attributes);
 		}
 	} );
 

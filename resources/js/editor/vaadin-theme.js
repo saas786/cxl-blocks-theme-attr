@@ -130,9 +130,6 @@ export const withInspectorControl = createHigherOrderComponent(
                                         ANCHOR_REGEX,
                                         '-'
                                     );
-                                    //console.log(nextValue);
-                                    console.log(vaadinTheme);
-                                    console.log(nextBlockClientId);
 
                                     setAttributes( {
                                         vaadinTheme: nextValue,
@@ -246,8 +243,6 @@ const addEditorBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
                 ...customData,
             };
         }
-
-        console.log(wrapperProps);
 
         return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
     } );
