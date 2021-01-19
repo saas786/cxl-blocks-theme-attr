@@ -16,6 +16,13 @@ export default [
 		type:    'string',
 		default: '',
 		control: ControlVaadinTheme,
+        attributes: {
+            type: 'string',
+            default: '',
+            source: 'attribute',
+            attribute: 'theme',
+            selector: '*',
+        },
 		blocks:  [
 			'core/image',
 			'core/gallery',
