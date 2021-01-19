@@ -1,3 +1,16 @@
+/**
+ * Laravel Mix configuration file.
+ *
+ * Laravel Mix is a layer built on top of WordPress that simplifies much of the
+ * complexity of building out a Webpack configuration file. Use this file to
+ * configure how your assets are handled in the build process.
+ *
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/installation.md
+ *
+ * @license   https://www.gnu.org/licenses/gpl-2.0.html GPL-2.0-or-later
+ */
+
+// Import required packages.
 const mix = require('laravel-mix');
 
 /*
@@ -24,9 +37,27 @@ const devPath  = 'resources';
 mix.setPublicPath( 'public' );
 
 /*
+ * Set Laravel Mix options.
+ *
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/url-rewriting.md#css-url-rewriting
+ * See: https://github.com/webpack-contrib/terser-webpack-plugin#options
+ */
+mix.options({
+    processCssUrls: false,
+    terser: {
+        terserOptions: {
+            output: {
+                comments: false
+            }
+        },
+        extractComments: false
+    }
+});
+
+/*
  * Builds sources maps for assets.
  *
- * @link https://laravel.com/docs/5.6/mix#css-source-maps
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/api.md#sourcemapsgenerateforproduction-devtype-productiontype
  */
 mix.sourceMaps();
 
@@ -35,21 +66,27 @@ mix.sourceMaps();
  * you only want versioned assets in production, do a conditional check for
  * `mix.inProduction()`.
  *
- * @link https://laravel.com/docs/5.6/mix#versioning-and-cache-busting
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/api.md#versionfiles
  */
 mix.version();
 
-mix.react( `${devPath}/js/editor.js`, 'js' );
+mix.
+    js( `${devPath}/js/editor.js`, 'js' )
+    .react();
+
+/*
+ * Extract vendors etc.
+ *
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/extract.md#L14
+ */
+mix.extract();
 
 /*
  * Add custom Webpack configuration.
  *
- * Laravel Mix doesn't currently minimize images while using its `.copy()`
- * function, so we're using the `CopyWebpackPlugin` for processing and copying
- * images into the publicribution folder.
  *
- * @link https://laravel.com/docs/5.6/mix#custom-webpack-configuration
- * @link https://webpack.js.org/configuration/
+ * See: https://github.com/JeffreyWay/laravel-mix/blob/fe4c1383bd11d25862b557587c97bafd95594365/docs/quick-webpack-configuration.md
+ * See: https://webpack.js.org/configuration/
  */
 mix.webpackConfig( {
     stats       : 'minimal',

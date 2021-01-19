@@ -5,7 +5,7 @@
 *.patch
 *.sw*
 *.idea
+yarn-error.log
 public/
 node_modules/
 vendor/
-resources/js/bk/
