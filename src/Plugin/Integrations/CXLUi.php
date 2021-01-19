@@ -6,7 +6,7 @@
  * @since 2020.02.04
  */
 
-namespace CXL\Block\Attrs\Plugin\Integrations;
+namespace CXL\Blocks\Attrs\Plugin\Integrations;
 
 /**
  * Main class.
@@ -25,11 +25,7 @@ class CXLUi {
      */
     protected function init(): void {
 
-        //add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_cxl_ui' ] );
-       // add_action( 'enqueue_block_assets', [ $this, 'enqueue_cxl_ui' ] );
-        //add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_cxl_ui' ] );
         add_action( 'init', [ $this, 'enqueue_cxl_ui' ] );
-
     }
 
     /**
@@ -55,6 +51,26 @@ class CXLUi {
             'wp-token-list',
         ];
 
+		wp_enqueue_script(
+			'cxl-blocks-theme-attr-manifest',
+			cxl_ui_blocks()->plugin_dir_url . 'public/js/manifest.js',
+			$deps,
+			null,
+			true
+		);
+
+		$deps[] = 'cxl-blocks-theme-attr-manifest';
+
+		wp_enqueue_script(
+			'cxl-blocks-theme-attr-vendor',
+			cxl_ui_blocks()->plugin_dir_url . 'public/js/vendor.js',
+			$deps,
+			null,
+			true
+		);
+
+		$deps[] = 'cxl-blocks-theme-attr-vendor';
+
         wp_enqueue_script(
             'cxl-blocks-theme-attr',
             cxl_ui_blocks()->plugin_dir_url . 'public/js/editor.js',
@@ -70,30 +86,7 @@ class CXLUi {
                 'default'        => __( 'Default',         'cxl-ui' ),
                 'designSettings' => __( 'Design Settings', 'cxl-ui' ),
                 'none'           => __( 'None',            'cxl-ui' ),
-                'theme'         => __( 'Theme',          'cxl-ui' ),
-
-                // Sizes.
-                'sizes' => [
-                    'fine'       => __( 'Fine',        'cxl-ui' ),
-                    'diminutive' => __( 'Diminutive',  'cxl-ui' ),
-                    'tiny'       => __( 'Tiny',        'cxl-ui' ),
-                    'small'      => __( 'Small',       'cxl-ui' ),
-                    'medium'     => __( 'Medium',      'cxl-ui' ),
-                    'large'      => __( 'Large',       'cxl-ui' ),
-                    'extraLarge' => __( 'Extra Large', 'cxl-ui' ),
-                    'huge'       => __( 'Huge',        'cxl-ui' ),
-                    'gargantuan' => __( 'Gargantuan',  'cxl-ui' ),
-                    'colossal'   => __( 'Colossal',    'cxl-ui' )
-                ],
-
-                // Vaadin Themes
-                'themes' => [
-                    'cxl-minidegree-track'  => __( 'Minidegree Track',        'cxl-ui' ),
-                    'cxl-accordion-card'    => __( 'Accordian Card',  'cxl-ui' ),
-                    'cxl-marketing-nav'     => __( 'Marketing Nav',  'cxl-ui' ), //cxl-marketing-nav hide-scroll-buttons minimal
-                    'reverse'               => __( 'Reverse',  'cxl-ui' )
-                ],
-
+                'theme'          => __( 'Theme',            'cxl-ui' ),
             ]
         ] );
 

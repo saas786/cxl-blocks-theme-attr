@@ -5,9 +5,9 @@
  * @package ConversionXL
  */
 
-namespace CXL\Block\Attrs;
+namespace CXL\Blocks\Attrs;
 
-use CXL\Block\Attrs\Plugin\Integrations;
+use CXL\Blocks\Attrs\Plugin\Integrations;
 use ConversionXL\Theme\Lib;
 
 defined( 'ABSPATH' ) || exit;

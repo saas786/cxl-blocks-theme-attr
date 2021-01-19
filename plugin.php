@@ -12,7 +12,7 @@
  * Version: 2020.02.04
  */
 
-use CXL\Block\Attrs\Plugin;
+use CXL\Blocks\Attrs\Plugin;
 
 defined( 'ABSPATH' ) || exit;
 
